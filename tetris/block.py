@@ -16,7 +16,7 @@ class Block:
     def draw(self, screen, offx, offy):
         tiles = self.updated_tile_positions()
         for tile in tiles:
-            cellBlock = pygame.Rect(offx + (tile.col*self.cell_size) +1, offy + (tile.row*self.cell_size) +1, self.cell_size-1, self.cell_size-1)
+            cellBlock = pygame.Rect(tile.col*self.cell_size + 1, tile.row*self.cell_size + 1 , self.cell_size - 1, self.cell_size - 1)
             pygame.draw.rect(screen, self.colors[self.id], cellBlock)
     
     def rotate(self):
