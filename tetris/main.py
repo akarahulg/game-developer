@@ -24,18 +24,20 @@ class Tetris:
 
         self.clock = pygame.time.Clock()
         self.GAME_UPDATE = pygame.USEREVENT
-        pygame.time.set_timer(self.GAME_UPDATE, 200)
+        pygame.time.set_timer(self.GAME_UPDATE, 400)
 
         # Components
         self.game = Game()
         self.scoreboard = Score(self.game)
         self.gameover = Gameover(self.game) 
-        self.Menu = Menu(self.game) 
+        self.menu = Menu(self.game) 
+
 
     def run(self):
         running = True
         while running:
             for event in pygame.event.get():
+                self.menu.handle_event(event)
                 if event.type == pygame.QUIT:
                     running = False
                 if event.type == pygame.KEYDOWN:
@@ -58,7 +60,8 @@ class Tetris:
             self.sidebar.run()
             self.scoreboard.run()
             self.gameover.run()
-            self.Menu.run()
+            self.menu.update_hover(pygame.mouse.get_pos())
+            self.menu.draw()
 
 
             pygame.display.update()
