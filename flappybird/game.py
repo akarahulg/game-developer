@@ -138,16 +138,19 @@ class Game():
         self.bird_group.add(self.bird)
         self.score = 0
         self.now = pygame.time.get_ticks()
-        self.reset_status = True
         
     def handle_events(self, event):
         if self.gameover_status:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.restart_rect.collidepoint(event.pos):
+                    self.restart()
+                    self.reset_game()
+                    self.reset_status = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
                     self.reset_game()
                     self.restart()
-            if event.type == pygame.KEYDOWN and self.reset_status:
-                if event.key == pygame.K_SPACE:
+                    self.reset_status = True
                     self.fly = True
                     self.reset_status = False
                     self.gameover_status = False

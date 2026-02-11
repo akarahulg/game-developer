@@ -31,7 +31,7 @@ class Bird(pygame.sprite.Sprite):
             self.image = self.bird_frames[1]
 
         self.velocity += GRAVITY
-        if self.rect.y <= 460:
+        if self.rect.y <= 470:
             self.rect.y += int(self.velocity)
             self.image = pygame.transform.rotate(self.image, -self.velocity * 3)
         else:
