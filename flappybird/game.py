@@ -23,15 +23,12 @@ class Game():
 
 
     def run(self):
-        
         self.base_rect.x -= SCROLL_SPEED
         if self.base_rect.x <= -30:
             self.base_rect.bottomright = [GAME_WIDTH + 32, GAME_HEIGHT]
 
-
         self.display_surface.blit(self.bkg, self.bkg_rect)
         self.display_surface.blit(self.base, self.base_rect)
-        self.bird = Bird()
         
     
 
